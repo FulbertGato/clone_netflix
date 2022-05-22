@@ -1,7 +1,17 @@
+import 'package:clone_netflix/repositories/data_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'ui/screens/loading_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => DataRepository(),
+      child: const MyApp(),
+    ),
+  );
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -11,13 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Netflix clone ',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
-      ),
-      home: const Text("CECI EST UN TEXT")
+      theme: ThemeData(),
+      home: const LoadingScreen(),
     );
   }
 }
-
